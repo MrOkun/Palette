@@ -16,7 +16,8 @@ namespace Palette
     public partial class FormMain : Form
     {
         private Bitmap _img;
-        private int _steps = 5;
+        private int paletteNum = 1;
+        private List<Color[]> paletts;
 
         public FormMain()
         {
@@ -28,6 +29,34 @@ namespace Palette
         {
             _img = new Bitmap(512, 512);
             Image_Box.Image = _img;
+            paletteChanger.SelectedIndex = 0;
+            palletLoad();
+        }
+
+        private void palletLoad()
+        {
+            paletts = new List<Color[]>();
+
+            Color[] palett1 = new Color[] {
+                HexToRgb("#2b3634"),
+                HexToRgb("#474848"),
+                HexToRgb("#6e5f52"),
+                HexToRgb("#a2856c"),
+                HexToRgb("#a2856c"),
+                HexToRgb("#dcb9a0"),
+                HexToRgb("#f3dbc6"),
+                HexToRgb("#fffefe")
+            };
+
+            Color[] palett2 = new Color[] {
+                HexToRgb("#211e20"),
+                HexToRgb("#555568"),
+                HexToRgb("#a0a08b"),
+                HexToRgb("#e9efec")
+            };
+
+            paletts.Add(palett1);
+            paletts.Add(palett2);
         }
 
         private Color HexToRgb(string hex)
@@ -47,23 +76,7 @@ namespace Palette
 
         private void Render_Click(object sender, EventArgs e)
         {
-            Color[] clrs = new Color[] {
-                HexToRgb("#000000"),
-                HexToRgb("#0000d8"),
-                HexToRgb("#0000ff"),
-                HexToRgb("#d80000"),
-                HexToRgb("#ff0000"),
-                HexToRgb("#d800d8"),
-                HexToRgb("#ff00ff"),
-                HexToRgb("#00d800"),
-                HexToRgb("#00ff00"),
-                HexToRgb("#00d8d8"),
-                HexToRgb("#00ffff"),
-                HexToRgb("#d8d800"),
-                HexToRgb("#ffff00"),
-                HexToRgb("#d8d8d8"),
-                HexToRgb("#ffffff"),
-            };
+
 
 
             Bitmap bitmap = (Bitmap)_img.Clone();
@@ -79,9 +92,9 @@ namespace Palette
                 {
                     Color clr = fastBitmap.GetPixel(x, y);
 
-                    int cclr = FindNearestColor(clrs, clr);
+                    int cclr = FindNearestColor(paletts[paletteChanger.SelectedIndex], clr);
 
-                    fastBitmap.SetPixel(x, y, clrs[cclr]);
+                    fastBitmap.SetPixel(x, y, paletts[paletteChanger.SelectedIndex][cclr]);
                 }
             }
 

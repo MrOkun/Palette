@@ -35,6 +35,7 @@ namespace Palette
             this.Load_Button = new System.Windows.Forms.Button();
             this.CheckSave = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.paletteChanger = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Box)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -99,11 +100,25 @@ namespace Palette
             this.panel1.Size = new System.Drawing.Size(350, 350);
             this.panel1.TabIndex = 6;
             // 
+            // paletteChanger
+            // 
+            this.paletteChanger.DisplayMember = "0";
+            this.paletteChanger.FormattingEnabled = true;
+            this.paletteChanger.Items.AddRange(new object[] {
+            "0",
+            "1"});
+            this.paletteChanger.Location = new System.Drawing.Point(184, 385);
+            this.paletteChanger.Name = "paletteChanger";
+            this.paletteChanger.Size = new System.Drawing.Size(83, 23);
+            this.paletteChanger.TabIndex = 1;
+            this.paletteChanger.ValueMember = "0";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 414);
+            this.Controls.Add(this.paletteChanger);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CheckSave);
             this.Controls.Add(this.Load_Button);
@@ -129,6 +144,7 @@ namespace Palette
         private System.Windows.Forms.Button Load_Button;
         private System.Windows.Forms.CheckBox CheckSave;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox paletteChanger;
     }
 }
 
