@@ -16,21 +16,25 @@ namespace Palette
     public partial class FormMain : Form
     {
         private Bitmap _img;
-        private int paletteNum = 1;
         private List<Color[]> paletts;
 
         public FormMain()
         {
+            palletLoad();
+            PreLoad();
             InitializeComponent();
             Start();
         }
 
-        private void Start()
+        private void PreLoad()
         {
             _img = new Bitmap(512, 512);
+        }
+
+        private void Start()
+        {
             Image_Box.Image = _img;
             paletteChanger.SelectedIndex = 0;
-            palletLoad();
         }
 
         private void palletLoad()
@@ -42,7 +46,6 @@ namespace Palette
                 HexToRgb("#2b3634"),
                 HexToRgb("#474848"),
                 HexToRgb("#6e5f52"),
-                HexToRgb("#a2856c"),
                 HexToRgb("#a2856c"),
                 HexToRgb("#dcb9a0"),
                 HexToRgb("#f3dbc6"),
@@ -75,13 +78,13 @@ namespace Palette
             };
 
             Color[] goldRust = new Color[] {
-                HexToRgb("#f6cd26"), 
-                HexToRgb("#ac6b26"), 
-                HexToRgb("#563226"), 
-                HexToRgb("#331c17"), 
-                HexToRgb("#bb7f57"), 
-                HexToRgb("#725956"), 
-                HexToRgb("#393939"), 
+                HexToRgb("#f6cd26"),
+                HexToRgb("#ac6b26"),
+                HexToRgb("#563226"),
+                HexToRgb("#331c17"),
+                HexToRgb("#bb7f57"),
+                HexToRgb("#725956"),
+                HexToRgb("#393939"),
                 HexToRgb("#202020")
             };
 
@@ -185,7 +188,7 @@ namespace Palette
             }
             catch (ArgumentException)//защита от одинаковых имён.
             {
-                MessageBox.Show("Произошла небольшая ошибка, попробуйте ещё раз");
+                MessageBox.Show("Произошла ошибка, попробуйте ещё раз");
             }
             finally
             {
@@ -213,6 +216,21 @@ namespace Palette
             {
                 OPF.Dispose();
             }
+        }
+
+        private void paletteChanger_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Bitmap _palett = new Bitmap(350, 72);
+            Graphics _palettGraph = Graphics.FromImage(_palett);
+
+            for (int i = 0; i < paletts[paletteChanger.SelectedIndex].Length; i++)
+            {
+                var brush = new SolidBrush(paletts[paletteChanger.SelectedIndex][i]);
+
+                _palettGraph.FillRectangle(brush, new Rectangle(i * (350 / paletts[paletteChanger.SelectedIndex].Length), 0, 350 / paletts[paletteChanger.SelectedIndex].Length, 72));
+            }
+
+            Palette_Box.Image = _palett;
         }
     }
 }
