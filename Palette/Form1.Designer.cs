@@ -36,10 +36,8 @@ namespace Palette
             this.CheckSave = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.paletteChanger = new System.Windows.Forms.ComboBox();
-            this.Palette_Box = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Box)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Palette_Box)).BeginInit();
             this.SuspendLayout();
             // 
             // Image_Box
@@ -53,7 +51,7 @@ namespace Palette
             // 
             // Render
             // 
-            this.Render.Location = new System.Drawing.Point(273, 447);
+            this.Render.Location = new System.Drawing.Point(273, 368);
             this.Render.Name = "Render";
             this.Render.Size = new System.Drawing.Size(89, 41);
             this.Render.TabIndex = 2;
@@ -63,7 +61,7 @@ namespace Palette
             // 
             // Save_Button
             // 
-            this.Save_Button.Location = new System.Drawing.Point(98, 446);
+            this.Save_Button.Location = new System.Drawing.Point(98, 367);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.Size = new System.Drawing.Size(80, 41);
             this.Save_Button.TabIndex = 3;
@@ -73,7 +71,7 @@ namespace Palette
             // 
             // Load_Button
             // 
-            this.Load_Button.Location = new System.Drawing.Point(12, 446);
+            this.Load_Button.Location = new System.Drawing.Point(12, 367);
             this.Load_Button.Name = "Load_Button";
             this.Load_Button.Size = new System.Drawing.Size(80, 42);
             this.Load_Button.TabIndex = 4;
@@ -86,7 +84,7 @@ namespace Palette
             this.CheckSave.AutoSize = true;
             this.CheckSave.Checked = true;
             this.CheckSave.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSave.Location = new System.Drawing.Point(184, 446);
+            this.CheckSave.Location = new System.Drawing.Point(184, 367);
             this.CheckSave.Name = "CheckSave";
             this.CheckSave.Size = new System.Drawing.Size(80, 19);
             this.CheckSave.TabIndex = 5;
@@ -97,7 +95,7 @@ namespace Palette
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Controls.Add(this.Image_Box);
-            this.panel1.Location = new System.Drawing.Point(12, 90);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(350, 350);
             this.panel1.TabIndex = 6;
@@ -112,27 +110,17 @@ namespace Palette
             "ST 8 PHOENIX PALETTE",
             "NINTENDO GAMEBOY (ARNE) PALETTE",
             "RUST GOLD 8 PALETTE"});
-            this.paletteChanger.Location = new System.Drawing.Point(184, 464);
+            this.paletteChanger.Location = new System.Drawing.Point(184, 385);
             this.paletteChanger.Name = "paletteChanger";
             this.paletteChanger.Size = new System.Drawing.Size(83, 23);
             this.paletteChanger.TabIndex = 1;
             this.paletteChanger.ValueMember = "0";
-            this.paletteChanger.SelectedIndexChanged += new System.EventHandler(this.paletteChanger_SelectedIndexChanged);
-            // 
-            // Palette_Box
-            // 
-            this.Palette_Box.Location = new System.Drawing.Point(12, 12);
-            this.Palette_Box.Name = "Palette_Box";
-            this.Palette_Box.Size = new System.Drawing.Size(350, 72);
-            this.Palette_Box.TabIndex = 7;
-            this.Palette_Box.TabStop = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 500);
-            this.Controls.Add(this.Palette_Box);
+            this.ClientSize = new System.Drawing.Size(374, 414);
             this.Controls.Add(this.paletteChanger);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CheckSave);
@@ -140,11 +128,12 @@ namespace Palette
             this.Controls.Add(this.Save_Button);
             this.Controls.Add(this.Render);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(390, 453);
+            this.MinimumSize = new System.Drawing.Size(390, 453);
             this.Name = "FormMain";
             this.Text = "Palette";
             ((System.ComponentModel.ISupportInitialize)(this.Image_Box)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Palette_Box)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,7 +148,6 @@ namespace Palette
         private System.Windows.Forms.CheckBox CheckSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox paletteChanger;
-        private System.Windows.Forms.PictureBox Palette_Box;
     }
 }
 
