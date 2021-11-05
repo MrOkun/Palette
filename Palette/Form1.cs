@@ -16,11 +16,11 @@ namespace Palette
     public partial class FormMain : Form
     {
         private Bitmap _img;
-        private int paletteNum = 1;
         private List<Color[]> paletts;
 
         public FormMain()
         {
+            palletLoad();
             InitializeComponent();
             Start();
         }
@@ -30,7 +30,6 @@ namespace Palette
             _img = new Bitmap(512, 512);
             Image_Box.Image = _img;
             paletteChanger.SelectedIndex = 0;
-            palletLoad();
         }
 
         private void palletLoad()
@@ -213,6 +212,22 @@ namespace Palette
             {
                 OPF.Dispose();
             }
+        }
+
+        private void paletteChanger_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Bitmap palette = new Bitmap(350, 40);
+
+            Graphics g = Graphics.FromImage(palette);
+
+            for (int i = 0; i < paletts[paletteChanger.SelectedIndex].ToArray().Length; i++)
+            {
+                var brush = new SolidBrush(paletts[paletteChanger.SelectedIndex][i]);
+                var rect = new Rectangle(new Point(palette.Width / paletts[paletteChanger.SelectedIndex].Length * i, 0), new Size(palette.Width / paletts[paletteChanger.SelectedIndex].Length, palette.Height));
+                g.FillRectangle(brush, rect);
+            }
+
+            Palette_Box.Image = palette;
         }
     }
 }
