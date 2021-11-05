@@ -37,6 +37,7 @@ namespace Palette
         {
             paletts = new List<Color[]>();
 
+
             Color[] palett1 = new Color[] {
                 HexToRgb("#2b3634"),
                 HexToRgb("#474848"),
@@ -55,8 +56,42 @@ namespace Palette
                 HexToRgb("#e9efec")
             };
 
+            Color[] phoenix = new Color[] {
+                HexToRgb("#330d10"),
+                HexToRgb("#4d130f"),
+                HexToRgb("#732017"),
+                HexToRgb("#992817"),
+                HexToRgb("#bf481d"),
+                HexToRgb("#d97e16"),
+                HexToRgb("#e5be22"),
+                HexToRgb("#f2e749")
+            };
+
+            Color[] nintendo = new Color[] {
+                HexToRgb("#243137"),
+                HexToRgb("#3f503f"),
+                HexToRgb("#768448"),
+                HexToRgb("#acb56b")
+            };
+
+            Color[] goldRust = new Color[] {
+                HexToRgb("#f6cd26"), 
+                HexToRgb("#ac6b26"), 
+                HexToRgb("#563226"), 
+                HexToRgb("#331c17"), 
+                HexToRgb("#bb7f57"), 
+                HexToRgb("#725956"), 
+                HexToRgb("#393939"), 
+                HexToRgb("#202020")
+            };
+
+
             paletts.Add(palett1);
             paletts.Add(palett2);
+            paletts.Add(phoenix);
+            paletts.Add(nintendo);
+            paletts.Add(goldRust);
+
         }
 
         private Color HexToRgb(string hex)
@@ -76,9 +111,6 @@ namespace Palette
 
         private void Render_Click(object sender, EventArgs e)
         {
-
-
-
             Bitmap bitmap = (Bitmap)_img.Clone();
             FastBitmap fastBitmap = new FastBitmap(bitmap);
 
@@ -103,7 +135,7 @@ namespace Palette
             Image_Box.Image = bitmap;
         }
 
-        private int GetDistance(Color current, Color match)
+        private int GetDistance(Color current, Color match) //Euclidean sRGB
         {
             int redDifference;
             int greenDifference;
@@ -140,19 +172,6 @@ namespace Palette
             }
 
             return index;
-        }
-
-        private double closestStep(int clr, int maxClr)
-        {
-            //return Math.Round(steps * value / 255 * Math.Floor(255 / (double)steps));
-            var nClr = Math.Round((double)clr / 255 * maxClr * 255);
-
-            if (nClr > 255)
-            {
-                nClr = 255;
-            }
-            
-            return nClr;
         }
 
         private void Save_Button_Click(object sender, EventArgs e)

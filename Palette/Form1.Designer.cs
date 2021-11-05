@@ -105,8 +105,11 @@ namespace Palette
             this.paletteChanger.DisplayMember = "0";
             this.paletteChanger.FormattingEnabled = true;
             this.paletteChanger.Items.AddRange(new object[] {
-            "0",
-            "1"});
+            "1 PALETTE",
+            "2 PALETTE",
+            "ST 8 PHOENIX PALETTE",
+            "NINTENDO GAMEBOY (ARNE) PALETTE",
+            "RUST GOLD 8 PALETTE"});
             this.paletteChanger.Location = new System.Drawing.Point(184, 385);
             this.paletteChanger.Name = "paletteChanger";
             this.paletteChanger.Size = new System.Drawing.Size(83, 23);
